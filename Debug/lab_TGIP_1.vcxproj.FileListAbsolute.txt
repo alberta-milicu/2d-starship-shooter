@@ -1,0 +1,8 @@
+F:\Teaching\Sem1\ACG\Lab3\Lab3\Debug\ACG_Lab3.exe
+F:\Teaching\Sem1\ACG\Lab3\Lab3\Debug\ACG_Lab3.pdb
+H:\2022-2023 teaching\ACG\Lab3\Lab3\Debug\ACG_Lab3.exe
+H:\2022-2023 teaching\ACG\Lab3\Lab3\Debug\ACG_Lab3.pdb
+C:\Users\danag\Documents\FILS\Anul III\ACG\Lab3\Debug\ACG_Lab3.exe
+C:\Users\danag\Documents\FILS\Anul III\ACG\Proiect\try fourth\Debug\ACG_Lab3.exe
+C:\Users\alber\Downloads\try fourth\Debug\ACG_Big.exe
+C:\Uni\Graphics\ACG BIG HW 2D GAME\Debug\ACG_Big.exe
