@@ -65,6 +65,14 @@ void Starship::moveRight(GLFWwindow* window, float unit, GLuint programID)
 	}
 }
 
+void Starship::checkMotion(GLFWwindow* window, float unit, GLuint programID)
+{
+	this->moveUp(window, unit, programID);
+	this->moveDown(window, unit, programID);
+	this->moveLeft(window, unit, programID);
+	this->moveRight(window, unit, programID);
+	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+}
 
 glm::vec3 Starship::getStarshipPosition()
 {

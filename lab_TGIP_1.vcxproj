@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Asteroid\asteroid.cpp" />
+    <ClCompile Include="Game\game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="Ship\starship.cpp" />
@@ -30,6 +32,8 @@
     <None Include="SimpleVertexShaderAst.vertexshader" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Asteroid\asteroid.h" />
+    <ClInclude Include="Game\game.h" />
     <ClInclude Include="Ship\starship.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

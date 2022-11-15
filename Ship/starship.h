@@ -25,6 +25,8 @@ class Starship
 		void moveLeft(GLFWwindow* window, float unit, GLuint programID);
 		void moveRight(GLFWwindow* window, float unit, GLuint programID);
 
+		void checkMotion(GLFWwindow* window, float unit, GLuint programID);
+
 		glm::vec3 getStarshipPosition();
 		float getStarshipPositionX();
 		float getStarshipPositionY();
