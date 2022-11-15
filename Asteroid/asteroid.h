@@ -21,9 +21,12 @@ public:
 	~Asteroid();
 
 	void applyTrans(glm::mat4 trans, GLuint programID);
+	void applyRotation(glm::mat4 trans, GLuint programID);
 	void moveDown(float unit, GLuint programID);
 	void checkMotion(GLuint programID,GLuint VAO);
 	void shootDown();
+	void spawnAsteroid(glm::mat4 trans, GLuint programID);
+	void despawnAsteroid(glm::mat4 trans, GLuint programID);
 
 	//void applyRot(glm::mat4 trans, GLuint programID);
 

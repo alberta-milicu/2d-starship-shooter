@@ -1,5 +1,8 @@
 #include "asteroid.h"
 
+static int HPArray[] = { 1, 200, 400, 600, 800, 1000 };
+
+
 Asteroid::Asteroid(glm::vec3 asteroidPosition, int HP, float fallSpeed)
 {
 	this->asteroidPosition = asteroidPosition;
@@ -23,16 +26,25 @@ void Asteroid::applyTrans(glm::mat4 trans, GLuint programID)
 	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 }
 
+void Asteroid::applyRotation(glm::mat4 trans, GLuint programID)
+{
+	trans = glm::rotate(trans, 10.0f, glm::vec3(this->getAsteroidPositionX(), 
+		this->getAsteroidPositionY(), 0.0));
+	unsigned int transformLoc = glGetUniformLocation(programID, "transform");
+	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+}
+
 void Asteroid::moveDown(float unit, GLuint programID)
 {
-	if (this->getAsteroidPositionY() > -1) {
+	if (this->getAsteroidPositionY() > -1.6) {
 
 		glm::mat4 trans(1.0f);
 		this->setAsteroidPositionY(this->getAsteroidPositionY() - unit);
 		trans = glm::translate(trans, glm::vec3(this->asteroidPosition.x, this->asteroidPosition.y, 0.0));
 		this->applyTrans(trans, programID);
-
+		this->applyRotation(trans, programID);
 	}
+
 }
 
 void Asteroid::checkMotion(GLuint programID,GLuint VAO)
@@ -44,6 +56,21 @@ void Asteroid::checkMotion(GLuint programID,GLuint VAO)
 	glBindVertexArray(VAO);
 
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+}
+
+void Asteroid::spawnAsteroid(glm::mat4 trans,GLuint programID)
+{
+	this->setAsteroidPositionX(static_cast <float> (rand()) / static_cast <float> (RAND_MAX));
+	this->setAsteroidPositionY(1.0f);
+	trans = glm::translate(trans, glm::vec3(this->asteroidPosition.x, this->asteroidPosition.y, 0.0));
+	this->applyTrans(trans, programID);
+	this->setAsteroidHP(HPArray[0]);
+}
+
+void Asteroid::despawnAsteroid(glm::mat4 trans, GLuint programID)
+{
+	if (this->getAsteroidPositionY() <= -1.6)
+		this->spawnAsteroid(trans, programID);
 }
 
 void Asteroid::shootDown()

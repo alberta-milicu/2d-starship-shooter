@@ -113,15 +113,15 @@ int main(void)
 	GLuint programIDAst = LoadShaders("SimpleVertexShaderAst.vertexshader", "SimpleFragmentShaderAst.fragmentshader");
 
 	GLfloat verticesAst[] = {
-		-0.05f,0.7f,0.0f,
-		0.05f,0.7f,0.0f,
-		-0.05f,0.6f,0.0f,
-		0.05f,0.6f,0.0f,
+	-0.2f,  0.2f, 1.0f, 0.0f, 0.0f, // Top-left
+	 0.2f,  0.2f, 0.0f, 1.0f, 0.0f, // Top-right
+	 0.2f, -0.2f, 0.0f, 0.0f, 1.0f, // Bottom-right
+	-0.2f, -0.2f, 1.0f, 1.0f, 1.0f  // Bottom-left
 
 	};
 	GLuint indicesAst[] = {
 		0,1,2,
-		1,3,2,
+		1,3,2
 	};
 
 
@@ -156,7 +156,7 @@ int main(void)
 	int drawAsteroidOk = 1;
 
 	Starship starship(glm::vec3(0.0f, -0.5f, 0.0f));
-	Asteroid asteroid1(glm::vec3(0.0f, 0.8f, 0.0f), 200, 0.0001f);
+	Asteroid asteroid1(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
 	Game game(window);
 
 
@@ -188,15 +188,18 @@ int main(void)
 		{	
 			asteroid1.applyTrans(trans, programIDAst);
 			asteroid1.checkMotion(programIDAst, VAOAst);
+
 			if (game.checkShoot(starship, asteroid1))
 			{
 				asteroid1.setAsteroidHP(asteroid1.getAsteroidHP()-1);
 
-				if(!asteroid1.getAsteroidHP())
-					asteroid1.shootDown();
-				//drawAsteroidOk = 0;
+				if (!asteroid1.getAsteroidHP())
+					asteroid1.spawnAsteroid(trans, programIDAst);
 
 			}
+
+		asteroid1.despawnAsteroid(trans, programIDAst);
+
 		}
 			
 	}
