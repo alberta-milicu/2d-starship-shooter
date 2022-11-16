@@ -67,7 +67,7 @@ int main(void)
 
 	glClearColor(0.0f, 0.0f, 0.25f, 0.0f);
 
-	GLuint programID = LoadShaders("SimpleVertexShader.vertexshader", "SimpleFragmentShader.fragmentshader");
+	GLuint programID = LoadShaders("Shaders/SimpleVertexShader.vertexshader", "Shaders/SimpleFragmentShader.fragmentshader");
 
 	GLfloat vertices[] = {
 		-0.05f, -0.0f, 0.0f,
@@ -104,32 +104,32 @@ int main(void)
 	glEnableVertexAttribArray(0);
 
 
-	GLuint programIDBlaster = LoadShaders("SimpleVertexShaderBlaster.vertexshader", "SimpleFragmentShaderBlaster.fragmentshader");
+	GLuint programIDBlaster = LoadShaders("Shaders/SimpleVertexShaderBlaster.vertexshader", "Shaders/SimpleFragmentShaderBlaster.fragmentshader");
 
 	GLfloat verticesBlaster[] = {
-		0.0f,   0.0f, 0.0f,    //center
+			0.0f,   0.0f, 0.0f,    //center
 
-		-0.005f,   0.015f, 0.0f,    // left top
-		0.005f,   0.015f, 0.0f,    // right top
-		0.01f, 0.012f, 0.0f,    //second right top
-		0.015f, 0.007f, 0.0f,   //third 
+		-0.0f,   0.01f, 0.0f,    // left top
+		0.0f,   0.01f, 0.0f,    // right top
+		0.005f, 0.007f, 0.0f,    //second right top
+		0.005f, 0.002f, 0.0f,   //third 
 
-		0.018f,   0.0f, 0.0f,    // right
+		0.013f,   0.0f, 0.0f,    // right
 
-		0.015f, -0.007f, 0.0f,    //right bottom 2
-		0.01f, -0.012, 0.0f,
+		0.01f, -0.002f, 0.0f,    //right bottom 2
+		0.005f, -0.007, 0.0f,
 
-		0.005f,   -0.015f, 0.0f,    // right bottom (notice sign)
+		0.0f,   -0.01f, 0.0f,    // right bottom (notice sign)
 
-		-0.005f,   -0.015f, 0.0f, //left buttom
+		-0.0f,   -0.01f, 0.0f, //left buttom
 
-		-0.01f, -0.012, 0.0f,   //left bottom 2
-		-0.015f, -0.007f, 0.0f,
+		-0.005f, -0.007, 0.0f,   //left bottom 2
+		-0.01f, -0.002f, 0.0f,
 
-		-0.018f,   0.0f, 0.0f,    // left
+		-0.013f,   0.0f, 0.0f,    // left
 
-		-0.015f, 0.007f, 0.0f,
-		-0.01f, 0.012, 0.0f  //left up 2
+		-0.01f, 0.002f, 0.0f,
+		-0.005f, 0.007, 0.0f  //left up 2
 	};
 	GLuint indicesBlaster[] = {
 		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1
@@ -161,8 +161,54 @@ int main(void)
 	glEnableVertexAttribArray(0);
 
 
+	GLuint programIDHealth = LoadShaders("Shaders/SimpleVertexShaderHealth.vertexshader", "Shaders/SimpleFragmentShaderHealth.fragmentshader");
 
-	GLuint programIDAst = LoadShaders("SimpleVertexShaderAst.vertexshader", "SimpleFragmentShaderAst.fragmentshader");
+	GLfloat verticesHealth[] = {
+		 -0.01f, 0.009f, 0.0f,
+		-0.03f, 0.009f, 0.0f,
+		-0.03f, -0.009f, 0.0f,
+		-0.01f, -0.009f, 0.0f,
+		-0.01f, -0.029f, 0.0f,
+		0.01f, -0.029f, 0.0f,
+		0.01f, -0.009f, 0.0f,
+		0.03f, -0.009f, 0.0f,
+		0.03f, 0.009f, 0.0f,
+		0.01f, 0.009f, 0.0f,
+		0.01f, 0.029f, 0.0f,
+		-0.01f, 0.029f, 0.0f,
+	};
+	GLuint indicesHealth[] = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0
+	};
+
+	GLuint VAOHealth;
+	glGenVertexArrays(1, &VAOHealth);
+	glBindVertexArray(VAOHealth);
+
+	GLuint VBO_IDHealth;
+	GLuint EBO_IDHealth;
+	glGenBuffers(1, &VBO_IDHealth);
+	glGenBuffers(1, &EBO_IDHealth);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_IDHealth);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(verticesHealth), verticesHealth, GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_IDHealth);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicesHealth), indicesHealth, GL_STATIC_DRAW);
+
+	glVertexAttribPointer(
+		0,
+		3,
+		GL_FLOAT,
+		GL_FALSE,
+		3 * sizeof(GL_FLOAT),
+		0
+	);
+
+	glEnableVertexAttribArray(0);
+
+
+
+	GLuint programIDAst = LoadShaders("Shaders/SimpleVertexShaderAst.vertexshader", "Shaders/SimpleFragmentShaderAst.fragmentshader");
 
 	GLfloat verticesAst[] = {
 	0.0f,   0.0f, 0.0f,    //center
@@ -204,7 +250,7 @@ int main(void)
 
 	glEnableVertexAttribArray(0);
 
-	GLuint programIDAstMini = LoadShaders("SimpleVertexShaderAstMini.vertexshader", "SimpleFragmentShaderAstMini.fragmentshader");
+	GLuint programIDAstMini = LoadShaders("Shaders/SimpleVertexShaderAstMini.vertexshader", "Shaders/SimpleFragmentShaderAstMini.fragmentshader");
 
 	GLfloat verticesAstMini[] = {
 	0.0f,   0.0f, 0.0f,    //center
@@ -247,7 +293,7 @@ int main(void)
 	glEnableVertexAttribArray(0);
 
 
-	GLuint programIDAst2 = LoadShaders("SimpleVertexShaderAst2.vertexshader", "SimpleFragmentShaderAst2.fragmentshader");
+	GLuint programIDAst2 = LoadShaders("Shaders/SimpleVertexShaderAst2.vertexshader", "Shaders/SimpleFragmentShaderAst2.fragmentshader");
 
 	GLfloat verticesAst2[] = {
 	0.0f,   0.0f, 0.0f,    //center
@@ -289,7 +335,7 @@ int main(void)
 
 	glEnableVertexAttribArray(0);
 
-	GLuint programIDAstMini2 = LoadShaders("SimpleVertexShaderAstMini2.vertexshader", "SimpleFragmentShaderAstMini2.fragmentshader");
+	GLuint programIDAstMini2 = LoadShaders("Shaders/SimpleVertexShaderAstMini2.vertexshader", "Shaders/SimpleFragmentShaderAstMini2.fragmentshader");
 
 	GLfloat verticesAstMini2[] = {
 	0.0f,   0.0f, 0.0f,    //center
@@ -331,7 +377,7 @@ int main(void)
 
 	glEnableVertexAttribArray(0);
 
-	GLuint programIDAst3 = LoadShaders("SimpleVertexShaderAst3.vertexshader", "SimpleFragmentShaderAst3.fragmentshader");
+	GLuint programIDAst3 = LoadShaders("Shaders/SimpleVertexShaderAst3.vertexshader", "Shaders/SimpleFragmentShaderAst3.fragmentshader");
 
 	GLfloat verticesAst3[] = {
 	0.0f,   0.0f, 0.0f,    //center
@@ -373,7 +419,7 @@ int main(void)
 
 	glEnableVertexAttribArray(0);
 
-	GLuint programIDAstMini3 = LoadShaders("SimpleVertexShaderAstMini3.vertexshader", "SimpleFragmentShaderAstMini3.fragmentshader");
+	GLuint programIDAstMini3 = LoadShaders("Shaders/SimpleVertexShaderAstMini3.vertexshader", "Shaders/SimpleFragmentShaderAstMini3.fragmentshader");
 
 	GLfloat verticesAstMini3[] = {
 	0.0f,   0.0f, 0.0f,    //center
@@ -426,13 +472,15 @@ int main(void)
 
 	Starship starship(glm::vec3(0.0f, -0.5f, 0.0f),10, 0.001f, blaster);
 
-	Asteroid asteroid1(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
-	Asteroid asteroid2(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
-	Asteroid asteroid3(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
+	Health health(glm::vec3(0.8f, 0.8f, 0.0f), 1, 0.0001f);
 
-	Asteroid asteroid1mini(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
+	Asteroid asteroid1(glm::vec3(0.8f, 0.8f, 0.0f), 1, 0.0001f);
+	Asteroid asteroid2(glm::vec3(0.4f, 0.8f, 0.0f), 1, 0.0001f);
+	Asteroid asteroid3(glm::vec3(-0.8f, 0.8f, 0.0f), 1, 0.0001f);
+
+	Asteroid asteroid1mini(glm::vec3(0.6f, 0.8f, 0.0f), 1, 0.0001f);
 	Asteroid asteroid2mini(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
-	Asteroid asteroid3mini(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
+	Asteroid asteroid3mini(glm::vec3(-0.6f, 0.8f, 0.0f), 1, 0.0001f);
 
 	int score = 0, level = 0;
 	
@@ -777,6 +825,45 @@ int main(void)
 		glm::mat4 trans(1.0f);
 
 		starship.blasterShootUp(window, programIDBlaster);
+
+
+		glUseProgram(programIDHealth);
+		glBindVertexArray(VAOHealth);
+
+		/*glm::mat4 trans(1.0f);*/
+
+
+
+		trans = glm::mat4(1.0f);
+
+		if (health.getHealthHP())
+		{
+			health.applyTrans(trans, programIDHealth);
+			health.checkMotion(programIDHealth, VAOHealth);
+
+			/*if (game.checkHealth(starship, health))
+			{
+				health.setHealthHP(0);
+
+				if (health.getHealthHP())
+				{
+					starship.setStarshipHP(starship.getStarshipHP() + 1);
+					health.spawnHealth(trans, programIDHealth);
+				}
+
+			}*/
+
+			if (game.checkHealth(starship, health))
+			{
+				starship.setStarshipHP(starship.getStarshipHP() + 1);
+				health.spawnHealth(trans, programIDHealth);
+				std::cout << starship.getStarshipHP() << std::endl;
+
+			}
+
+			health.despawnHealth(trans, programIDHealth);
+
+		}
 		
 			
 	}

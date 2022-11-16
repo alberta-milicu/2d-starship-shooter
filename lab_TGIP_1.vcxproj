@@ -22,11 +22,14 @@
     <ClCompile Include="Asteroid\asteroid.cpp" />
     <ClCompile Include="Blaster\blaster.cpp" />
     <ClCompile Include="Game\game.cpp" />
+    <ClCompile Include="Health\health.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="Ship\starship.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shaders\SimpleFragmentShaderHealth.fragmentshader" />
+    <None Include="Shaders\SimpleVertexShaderHealth.vertexshader" />
     <None Include="SimpleFragmentShader.fragmentshader" />
     <None Include="SimpleFragmentShaderAst.fragmentshader" />
     <None Include="SimpleFragmentShaderAst2.fragmentshader" />
@@ -48,6 +51,7 @@
     <ClInclude Include="Asteroid\asteroid.h" />
     <ClInclude Include="Blaster\blaster.h" />
     <ClInclude Include="Game\game.h" />
+    <ClInclude Include="Health\health.h" />
     <ClInclude Include="Ship\starship.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

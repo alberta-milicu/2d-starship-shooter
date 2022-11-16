@@ -15,6 +15,23 @@ int computePositionRelativityY(Starship starship, Asteroid asteroid)
 	return 0;
 }
 
+int computePositionRelativityXHealth(Starship starship, Health health)
+{
+	if (starship.getStarshipPositionX() >= health.getHealthPositionX() - 0.2 &&
+		starship.getStarshipPositionX() <= health.getHealthPositionX() + 0.2)
+		return 1;
+	return 0;
+}
+
+int computePositionEquityYHealth(Starship starship, Health health)
+{
+	if (starship.getStarshipPositionY() >= health.getHealthPositionY() - 0.2 &&
+		starship.getStarshipPositionY() <= health.getHealthPositionY() + 0.2)
+		return 1;
+	return 0;
+}
+
+
 int computePositionEquityY(Starship starship, Asteroid asteroid)
 {
 	if (starship.getStarshipPositionY() >= asteroid.getAsteroidPositionY() - 0.2 &&
@@ -32,6 +49,13 @@ Game::Game(GLFWwindow* window, int score, int level)
 
 Game::~Game()
 {
+}
+
+int Game::checkHealth(Starship starship, Health health)
+{
+	if (computePositionRelativityXHealth(starship, health) && computePositionEquityYHealth(starship, health))
+		return 1;
+	return 0;
 }
 
 int Game::checkShoot(Starship starship, Asteroid asteroid)

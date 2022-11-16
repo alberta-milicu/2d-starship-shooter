@@ -37,7 +37,7 @@ void Blaster::shootUp(GLFWwindow* window, GLuint programID, float startingPointX
 		while(this->getBlasterPositionY() < 1) {
 
 			glm::mat4 trans(1.0f);
-			this->setBlasterPositionY(this->getBlasterPositionY() + 0.1f);
+			this->setBlasterPositionY(this->getBlasterPositionY() + 0.08f);
 			trans = glm::translate(trans, glm::vec3(this->blasterPosition.x, this->blasterPosition.y, 0.0));
 			this->applyTrans(trans, programID);
 		}

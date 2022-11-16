@@ -12,6 +12,7 @@
 
 #include "..\Ship\starship.h"
 #include "..\Asteroid\asteroid.h"
+#include "..\Health\health.h"
 
 
 class Game
@@ -25,6 +26,7 @@ public:
 	Game(GLFWwindow* window, int score, int level);
 	~Game();
 
+	int checkHealth(Starship starship, Health health);
 	int checkShoot(Starship starship, Asteroid asteroid);
 	int checkGotShot(Starship starship, Asteroid asteroid);
 	void moveBullet(Starship starship, Asteroid asteroid);
