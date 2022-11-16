@@ -32,6 +32,8 @@ class Starship
 
 		void checkMotion(GLFWwindow* window, GLuint programID);
 
+		void blasterShootUp(GLFWwindow* window, GLuint programID);
+
 		void starshipLevelUp();
 
 		glm::vec3 getStarshipPosition();

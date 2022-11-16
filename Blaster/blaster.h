@@ -21,11 +21,18 @@ public:
 	Blaster();
 	~Blaster();
 
+	void applyTrans(glm::mat4 trans, GLuint programID);
+	void shootUp(GLFWwindow* window, GLuint programID, float startingPointX, float startingPointY);
+
 	glm::vec3 getBlasterPosition();
+	float getBlasterPositionX();
+	float getBlasterPositionY();
 	float getBlasterSpeed();
 	int getBlasterDamage();
 
 	void setBlasterPosition(glm::vec3 blasterPosition);
+	void setBlasterPositionX(float x);
+	void setBlasterPositionY(float y);
 	void setBlasterSpeed(float blasterSpeed);
 	void setBlasterDamage(int damage);
 };

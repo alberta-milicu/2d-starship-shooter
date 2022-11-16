@@ -79,6 +79,11 @@ void Starship::checkMotion(GLFWwindow* window, GLuint programID)
 	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 }
 
+void Starship::blasterShootUp(GLFWwindow* window, GLuint programID)
+{
+	this->blaster.shootUp(window, programID, this->starshipPosition.x, this->starshipPosition.y + 0.1f);
+}
+
 void Starship::starshipLevelUp()
 {
 	this->setStarshipHP(MAX_HP);

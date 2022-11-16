@@ -27,6 +27,8 @@ public:
 
 	int checkShoot(Starship starship, Asteroid asteroid);
 	int checkGotShot(Starship starship, Asteroid asteroid);
+	void moveBullet(Starship starship, Asteroid asteroid);
+
 
 	GLFWwindow* getWindow();
 	int getScore();

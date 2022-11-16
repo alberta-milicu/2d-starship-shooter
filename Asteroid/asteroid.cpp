@@ -92,7 +92,7 @@ void Asteroid::shootDown()
 void Asteroid::asteroidLevelUp()
 {
 	if (this->getFallSpeed() < 0.5)
-		this->setFallSpeed(this->getFallSpeed() * 1.6);
+		this->setFallSpeed(this->getFallSpeed() * 1.35);
 	else std::cout << "YOU HAVE REACHED MAX LEVEL";
 }
 

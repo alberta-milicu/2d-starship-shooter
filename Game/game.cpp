@@ -51,6 +51,21 @@ int Game::checkGotShot(Starship starship, Asteroid asteroid)
 	return 0;
 }
 
+void Game::moveBullet(Starship starship, Asteroid asteroid)
+{
+	if (checkShoot(starship, asteroid))
+	{
+		starship.getStarshipBlaster().setBlasterPositionX(starship.getStarshipPositionX());
+		starship.getStarshipBlaster().setBlasterPositionY(starship.getStarshipPositionY());
+
+		while (starship.getStarshipBlaster().getBlasterPositionY() < 1)
+		{
+			starship.getStarshipBlaster().setBlasterPositionY(starship.getStarshipBlaster().getBlasterPositionY() + 0.1f);
+			
+		}
+	}
+}
+
 
 GLFWwindow* Game::getWindow()
 {
