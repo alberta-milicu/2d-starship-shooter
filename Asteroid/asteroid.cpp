@@ -65,55 +65,21 @@ void Asteroid::checkMotion(GLuint programID,GLuint VAO)
 	glDrawElements(GL_TRIANGLE_FAN, 8, GL_UNSIGNED_INT, 0);
 }
 
-void Asteroid::spawnAsteroid1(glm::mat4 trans,GLuint programID)
+void Asteroid::spawnAsteroid(glm::mat4 trans,GLuint programID, float left, float right)
 {
-	this->setAsteroidPositionX(randomFloat(-0.8,-0.6));
+	this->setAsteroidPositionX(randomFloat(left,right));
 	this->setAsteroidPositionY(1.2f);
 	trans = glm::translate(trans, glm::vec3(this->asteroidPosition.x, this->asteroidPosition.y, 0.0));
 	this->applyTrans(trans, programID);
 	this->setAsteroidHP(HPArray[0]);
 }
 
-void Asteroid::despawnAsteroid1(glm::mat4 trans, GLuint programID)
+void Asteroid::despawnAsteroid(glm::mat4 trans, GLuint programID, float left, float right)
 {
 	if (this->getAsteroidPositionY() <= -1.6)
-		this->spawnAsteroid1(trans, programID);
+		this->spawnAsteroid(trans, programID, left, right);
 }
 
-
-
-void Asteroid::spawnAsteroid2(glm::mat4 trans, GLuint programID)
-{
-	this->setAsteroidPositionX(randomFloat(-0.4, 0.4));
-	this->setAsteroidPositionY(1.2f);
-	trans = glm::translate(trans, glm::vec3(this->asteroidPosition.x, this->asteroidPosition.y, 0.0));
-	this->applyTrans(trans, programID);
-	this->setAsteroidHP(HPArray[0]);
-}
-
-void Asteroid::despawnAsteroid2(glm::mat4 trans, GLuint programID)
-{
-	if (this->getAsteroidPositionY() <= -1.6)
-		this->spawnAsteroid2(trans, programID);
-}
-
-
-
-
-void Asteroid::spawnAsteroid3(glm::mat4 trans, GLuint programID)
-{
-	this->setAsteroidPositionX(randomFloat(0.6, 0.8));
-	this->setAsteroidPositionY(1.2f);
-	trans = glm::translate(trans, glm::vec3(this->asteroidPosition.x, this->asteroidPosition.y, 0.0));
-	this->applyTrans(trans, programID);
-	this->setAsteroidHP(HPArray[0]);
-}
-
-void Asteroid::despawnAsteroid3(glm::mat4 trans, GLuint programID)
-{
-	if (this->getAsteroidPositionY() <= -1.6)
-		this->spawnAsteroid3(trans, programID);
-}
 
 void Asteroid::shootDown()
 {
@@ -126,7 +92,7 @@ void Asteroid::shootDown()
 void Asteroid::asteroidLevelUp()
 {
 	if (this->getFallSpeed() < 0.5)
-		this->setFallSpeed(this->getFallSpeed() * 2);
+		this->setFallSpeed(this->getFallSpeed() * 1.6);
 	else std::cout << "YOU HAVE REACHED MAX LEVEL";
 }
 

@@ -30,10 +30,16 @@
     <None Include="SimpleFragmentShaderAst.fragmentshader" />
     <None Include="SimpleFragmentShaderAst2.fragmentshader" />
     <None Include="SimpleFragmentShaderAst3.fragmentshader" />
+    <None Include="SimpleFragmentShaderAstMini.fragmentshader" />
+    <None Include="SimpleFragmentShaderAstMini2.fragmentshader" />
+    <None Include="SimpleFragmentShaderAstMini3.fragmentshader" />
     <None Include="SimpleVertexShader.vertexshader" />
     <None Include="SimpleVertexShaderAst.vertexshader" />
     <None Include="SimpleVertexShaderAst2.vertexshader" />
     <None Include="SimpleVertexShaderAst3.vertexshader" />
+    <None Include="SimpleVertexShaderAstMini.vertexshader" />
+    <None Include="SimpleVertexShaderAstMini2.vertexshader" />
+    <None Include="SimpleVertexShaderAstMini3.vertexshader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asteroid\asteroid.h" />

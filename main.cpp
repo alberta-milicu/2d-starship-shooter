@@ -195,6 +195,48 @@ int main(void)
 
 	glEnableVertexAttribArray(0);
 
+	GLuint programIDAstMini = LoadShaders("SimpleVertexShaderAstMini.vertexshader", "SimpleFragmentShaderAstMini.fragmentshader");
+
+	GLfloat verticesAstMini[] = {
+	0.0f,   0.0f, 0.0f,    //center
+	-0.05f,   0.1f, 0.0f,    // left top
+	0.05f,   0.1f, 0.0f,    // right top
+	0.1f,   0.0f, 0.0f,    // right
+	0.05f,   -0.1f, 0.0f,    // right bottom (notice sign)
+	-0.05f,  -0.1f, 0.0f,    // left bottom
+	-0.1f,   0.0f, 0.0f
+
+	};
+	GLuint indicesAstMini[] = {
+		0, 1, 2, 3, 4, 5, 6, 1
+	};
+
+
+	GLuint VAOAstMini;
+	glGenVertexArrays(1, &VAOAstMini);
+	glBindVertexArray(VAOAstMini);
+
+	GLuint VBO_IDAstMini;
+	GLuint EBO_IDAstMini;
+	glGenBuffers(1, &VBO_IDAstMini);
+	glGenBuffers(1, &EBO_IDAstMini);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_IDAstMini);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(verticesAstMini), verticesAstMini, GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_IDAstMini);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicesAstMini), indicesAstMini, GL_STATIC_DRAW);
+
+	glVertexAttribPointer(
+		0,
+		3,
+		GL_FLOAT,
+		GL_FALSE,
+		3 * sizeof(GL_FLOAT),
+		0
+	);
+
+	glEnableVertexAttribArray(0);
+
 
 	GLuint programIDAst2 = LoadShaders("SimpleVertexShaderAst2.vertexshader", "SimpleFragmentShaderAst2.fragmentshader");
 
@@ -226,6 +268,48 @@ int main(void)
 	glBufferData(GL_ARRAY_BUFFER, sizeof(verticesAst2), verticesAst2, GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_IDAst2);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicesAst2), indicesAst2, GL_STATIC_DRAW);
+
+	glVertexAttribPointer(
+		0,
+		3,
+		GL_FLOAT,
+		GL_FALSE,
+		3 * sizeof(GL_FLOAT),
+		0
+	);
+
+	glEnableVertexAttribArray(0);
+
+	GLuint programIDAstMini2 = LoadShaders("SimpleVertexShaderAstMini2.vertexshader", "SimpleFragmentShaderAstMini2.fragmentshader");
+
+	GLfloat verticesAstMini2[] = {
+	0.0f,   0.0f, 0.0f,    //center
+	-0.05f,   0.1f, 0.0f,    // left top
+	0.05f,   0.1f, 0.0f,    // right top
+	0.1f,   0.0f, 0.0f,    // right
+	0.05f,   -0.1f, 0.0f,    // right bottom (notice sign)
+	-0.05f,  -0.1f, 0.0f,    // left bottom
+	-0.1f,   0.0f, 0.0f
+
+	};
+	GLuint indicesAstMini2[] = {
+		0, 1, 2, 3, 4, 5, 6, 1
+	};
+
+
+	GLuint VAOAstMini2;
+	glGenVertexArrays(1, &VAOAstMini2);
+	glBindVertexArray(VAOAstMini2);
+
+	GLuint VBO_IDAstMini2;
+	GLuint EBO_IDAstMini2;
+	glGenBuffers(1, &VBO_IDAstMini2);
+	glGenBuffers(1, &EBO_IDAstMini2);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_IDAstMini2);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(verticesAstMini2), verticesAstMini2, GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_IDAstMini2);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicesAstMini2), indicesAstMini2, GL_STATIC_DRAW);
 
 	glVertexAttribPointer(
 		0,
@@ -280,6 +364,47 @@ int main(void)
 
 	glEnableVertexAttribArray(0);
 
+	GLuint programIDAstMini3 = LoadShaders("SimpleVertexShaderAstMini3.vertexshader", "SimpleFragmentShaderAstMini3.fragmentshader");
+
+	GLfloat verticesAstMini3[] = {
+	0.0f,   0.0f, 0.0f,    //center
+	-0.05f,   0.1f, 0.0f,    // left top
+	0.05f,   0.1f, 0.0f,    // right top
+	0.1f,   0.0f, 0.0f,    // right
+	0.05f,   -0.1f, 0.0f,    // right bottom (notice sign)
+	-0.05f,  -0.1f, 0.0f,    // left bottom
+	-0.1f,   0.0f, 0.0f
+
+	};
+	GLuint indicesAstMini3[] = {
+		0, 1, 2, 3, 4, 5, 6, 1
+	};
+
+	GLuint VAOAstMini3;
+	glGenVertexArrays(1, &VAOAstMini3);
+	glBindVertexArray(VAOAstMini3);
+
+	GLuint VBO_IDAstMini3;
+	GLuint EBO_IDAstMini3;
+	glGenBuffers(1, &VBO_IDAstMini3);
+	glGenBuffers(1, &EBO_IDAstMini3);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_IDAstMini3);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(verticesAstMini3), verticesAstMini3, GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_IDAstMini3);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicesAstMini3), indicesAstMini3, GL_STATIC_DRAW);
+
+	glVertexAttribPointer(
+		0,
+		3,
+		GL_FLOAT,
+		GL_FALSE,
+		3 * sizeof(GL_FLOAT),
+		0
+	);
+
+	glEnableVertexAttribArray(0);
+
 	glm::mat4 trans(1.0f);
 
 	glfwSetFramebufferSizeCallback(window, window_callback);
@@ -289,9 +414,14 @@ int main(void)
 	//float fallSpeed = 0.0001f;
 
 	Starship starship(glm::vec3(0.0f, -0.5f, 0.0f),10, 0.001f);
+
 	Asteroid asteroid1(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
 	Asteroid asteroid2(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
 	Asteroid asteroid3(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
+
+	Asteroid asteroid1mini(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
+	Asteroid asteroid2mini(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
+	Asteroid asteroid3mini(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
 
 	int score = 0, level = 0;
 	
@@ -324,9 +454,14 @@ int main(void)
 			max_level++;
 			std::cout << "LEVEL 1" << std::endl;
 			game.setLevel(lvls[1]);
+
 			asteroid1.asteroidLevelUp();
 			asteroid2.asteroidLevelUp();
 			asteroid3.asteroidLevelUp();
+
+			asteroid1mini.asteroidLevelUp();
+			asteroid2mini.asteroidLevelUp();
+			asteroid3mini.asteroidLevelUp();
 
 			starship.starshipLevelUp();
 
@@ -337,9 +472,14 @@ int main(void)
 			max_level++;
 			std::cout << "LEVEL 2" << std::endl;
 			game.setLevel(lvls[2]);
+
 			asteroid1.asteroidLevelUp();
 			asteroid2.asteroidLevelUp();
 			asteroid3.asteroidLevelUp();
+
+			asteroid1mini.asteroidLevelUp();
+			asteroid2mini.asteroidLevelUp();
+			asteroid3mini.asteroidLevelUp();
 
 			starship.starshipLevelUp();
 		}
@@ -349,9 +489,14 @@ int main(void)
 			max_level++;
 			std::cout << "LEVEL 3" << std::endl;
 			game.setLevel(lvls[3]);
+
 			asteroid1.asteroidLevelUp();
 			asteroid2.asteroidLevelUp();
 			asteroid3.asteroidLevelUp();
+
+			asteroid1mini.asteroidLevelUp();
+			asteroid2mini.asteroidLevelUp();
+			asteroid3mini.asteroidLevelUp();
 
 			starship.starshipLevelUp();
 		}
@@ -361,9 +506,14 @@ int main(void)
 			max_level++;
 			std::cout << "LEVEL 4" << std::endl;
 			game.setLevel(lvls[4]);
+
 			asteroid1.asteroidLevelUp();
 			asteroid2.asteroidLevelUp();
 			asteroid3.asteroidLevelUp();
+
+			asteroid1mini.asteroidLevelUp();
+			asteroid2mini.asteroidLevelUp();
+			asteroid3mini.asteroidLevelUp();
 
 			starship.starshipLevelUp();
 		}
@@ -373,16 +523,18 @@ int main(void)
 			max_level++;
 			std::cout << "MAX LEVEL" << std::endl;
 			game.setLevel(lvls[5]);
+
 			asteroid1.asteroidLevelUp();
 			asteroid2.asteroidLevelUp();
 			asteroid3.asteroidLevelUp();
 
+			asteroid1mini.asteroidLevelUp();
+			asteroid2mini.asteroidLevelUp();
+			asteroid3mini.asteroidLevelUp();
+
 			starship.starshipLevelUp();
 		}
 
-
-
-		std::cout << game.getLevel() << std::endl;
 
 		starship.checkMotion(window, programID);
 
@@ -409,7 +561,7 @@ int main(void)
 				{
 					game.setScore(game.getScore() + 100);
 					//std::cout << "SCORE: " << game.getScore() << std::endl;
-					asteroid1.spawnAsteroid1(trans, programIDAst);
+					asteroid1.spawnAsteroid(trans, programIDAst, -0.8,-0.6);
 				}
 
 			}
@@ -417,14 +569,51 @@ int main(void)
 			if (game.checkGotShot(starship, asteroid1))
 			{
 				starship.setStarshipHP(starship.getStarshipHP() - 1);
-				asteroid1.spawnAsteroid1(trans, programIDAst);
+				asteroid1.spawnAsteroid(trans, programIDAst, -0.8, -0.6);
 				std::cout << starship.getStarshipHP() << std::endl;
 
 			}
 
-		asteroid1.despawnAsteroid1(trans, programIDAst);
+		asteroid1.despawnAsteroid(trans, programIDAst, -0.8, -0.6);
 
 		}
+
+		glUseProgram(programIDAstMini);
+		glBindVertexArray(VAOAstMini);
+
+		trans = glm::mat4(1.0f);
+
+		if (asteroid1mini.getAsteroidHP())
+		{
+			asteroid1mini.applyTrans(trans, programIDAstMini);
+			asteroid1mini.checkMotion(programIDAstMini, VAOAstMini);
+
+			if (game.checkShoot(starship, asteroid1mini))
+			{
+				asteroid1mini.setAsteroidHP(asteroid1mini.getAsteroidHP() - 1);
+
+				if (!asteroid1mini.getAsteroidHP())
+				{
+					game.setScore(game.getScore() + 100);
+					//std::cout << "SCORE: " << game.getScore() << std::endl;
+					asteroid1mini.spawnAsteroid(trans, programIDAstMini, -0.5, -0.4);
+				}
+
+			}
+
+			if (game.checkGotShot(starship, asteroid1mini))
+			{
+				starship.setStarshipHP(starship.getStarshipHP() - 1);
+				asteroid1mini.spawnAsteroid(trans, programIDAstMini, -0.5, -0.4);
+				std::cout << starship.getStarshipHP() << std::endl;
+
+			}
+
+			asteroid1mini.despawnAsteroid(trans, programIDAstMini, -0.5, -0.4);
+
+		}
+
+
 
 		glUseProgram(programIDAst2);
 		glBindVertexArray(VAOAst2);
@@ -447,7 +636,7 @@ int main(void)
 				{
 					game.setScore(game.getScore() + 100);
 					//std::cout << "SCORE: " << game.getScore() << std::endl;
-					asteroid2.spawnAsteroid2(trans, programIDAst);
+					asteroid2.spawnAsteroid(trans, programIDAst, -0.2, 0.0);
 				}
 
 			}
@@ -455,11 +644,46 @@ int main(void)
 			if (game.checkGotShot(starship, asteroid2))
 			{
 				starship.setStarshipHP(starship.getStarshipHP() - 1);
-				asteroid2.spawnAsteroid2(trans, programIDAst2);
+				asteroid2.spawnAsteroid(trans, programIDAst2, -0.2, 0.0);
 				std::cout << starship.getStarshipHP() << std::endl;
 			}
 
-			asteroid2.despawnAsteroid2(trans, programIDAst2);
+			asteroid2.despawnAsteroid(trans, programIDAst2, -0.2, 0.0);
+
+		}
+
+		glUseProgram(programIDAstMini2);
+		glBindVertexArray(VAOAstMini2);
+
+		trans = glm::mat4(1.0f);
+
+		if (asteroid2mini.getAsteroidHP())
+		{
+			asteroid2mini.applyTrans(trans, programIDAstMini2);
+			asteroid2mini.checkMotion(programIDAstMini2, VAOAstMini2);
+
+			if (game.checkShoot(starship, asteroid2mini))
+			{
+				asteroid2mini.setAsteroidHP(asteroid2mini.getAsteroidHP() - 1);
+
+				if (!asteroid2mini.getAsteroidHP())
+				{
+					game.setScore(game.getScore() + 100);
+					//std::cout << "SCORE: " << game.getScore() << std::endl;
+					asteroid2mini.spawnAsteroid(trans, programIDAstMini2, 0.1, 0.2);
+				}
+
+			}
+
+			if (game.checkGotShot(starship, asteroid2mini))
+			{
+				starship.setStarshipHP(starship.getStarshipHP() - 1);
+				asteroid2mini.spawnAsteroid(trans, programIDAstMini2, 0.1, 0.2);
+				std::cout << starship.getStarshipHP() << std::endl;
+
+			}
+
+			asteroid2mini.despawnAsteroid(trans, programIDAstMini2, 0.1, 0.2);
 
 		}
 
@@ -484,7 +708,7 @@ int main(void)
 				{
 					game.setScore(game.getScore() + 100);
 					//std::cout << "SCORE: " << game.getScore() << std::endl;
-					asteroid3.spawnAsteroid3(trans, programIDAst);
+					asteroid3.spawnAsteroid(trans, programIDAst, 0.4, 0.6);
 				}
 
 			}
@@ -492,11 +716,46 @@ int main(void)
 			if (game.checkGotShot(starship, asteroid3))
 			{
 				starship.setStarshipHP(starship.getStarshipHP() - 1);
-				asteroid3.spawnAsteroid2(trans, programIDAst3);
+				asteroid3.spawnAsteroid(trans, programIDAst3, 0.4, 0.6);
 				std::cout << starship.getStarshipHP() << std::endl;
 			}
 
-			asteroid3.despawnAsteroid3(trans, programIDAst3);
+			asteroid3.despawnAsteroid(trans, programIDAst3, 0.4, 0.6);
+
+		}
+
+		glUseProgram(programIDAstMini3);
+		glBindVertexArray(VAOAstMini3);
+
+		trans = glm::mat4(1.0f);
+
+		if (asteroid3mini.getAsteroidHP())
+		{
+			asteroid3mini.applyTrans(trans, programIDAstMini3);
+			asteroid3mini.checkMotion(programIDAstMini3, VAOAstMini3);
+
+			if (game.checkShoot(starship, asteroid3mini))
+			{
+				asteroid3mini.setAsteroidHP(asteroid3mini.getAsteroidHP() - 1);
+
+				if (!asteroid3mini.getAsteroidHP())
+				{
+					game.setScore(game.getScore() + 100);
+					//std::cout << "SCORE: " << game.getScore() << std::endl;
+					asteroid3mini.spawnAsteroid(trans, programIDAstMini3, 0.7, 0.8);
+				}
+
+			}
+
+			if (game.checkGotShot(starship, asteroid3mini))
+			{
+				starship.setStarshipHP(starship.getStarshipHP() - 1);
+				asteroid3mini.spawnAsteroid(trans, programIDAstMini3, 0.7, 0.8);
+				std::cout << starship.getStarshipHP() << std::endl;
+
+			}
+
+			asteroid3mini.despawnAsteroid(trans, programIDAstMini3, 0.7, 0.8);
 
 		}
 			
