@@ -505,7 +505,11 @@ int main(void)
 		if (game.getScore() < lvlScores[0] && max_level < 0)
 		{
 			max_level++;
-			std::cout << "LEVEL 0" << std::endl;
+			std::cout << "|-------------------------|" << std::endl;
+			std::cout << "|                         |" << std::endl;
+			std::cout << "|         LEVEL 0         |" << std::endl;
+			std::cout << "|                         |" << std::endl;
+			std::cout << "|-------------------------|" << std::endl;
 			game.setLevel(lvls[0]);
 
 		}
@@ -513,7 +517,11 @@ int main(void)
 		if (game.getScore() >= lvlScores[0] && game.getScore() <= lvlScores[1] && max_level < 1)
 		{
 			max_level++;
-			std::cout << "LEVEL 1" << std::endl;
+			std::cout << "|-------------------------|" << std::endl;
+			std::cout << "|                         |" << std::endl;
+			std::cout << "|         LEVEL 1         |" << std::endl;
+			std::cout << "|                         |" << std::endl;
+			std::cout << "|-------------------------|" << std::endl;
 			game.setLevel(lvls[1]);
 
 			asteroid1.asteroidLevelUp();
@@ -534,7 +542,11 @@ int main(void)
 		if (game.getScore() >= lvlScores[1] && game.getScore() <= lvlScores[2] && max_level < 2)
 		{
 			max_level++;
-			std::cout << "LEVEL 2" << std::endl;
+			std::cout << "|-------------------------|" << std::endl;
+			std::cout << "|                         |" << std::endl;
+			std::cout << "|         LEVEL 2         |" << std::endl;
+			std::cout << "|                         |" << std::endl;
+			std::cout << "|-------------------------|" << std::endl;
 			game.setLevel(lvls[2]);
 
 			asteroid1.asteroidLevelUp();
@@ -553,7 +565,11 @@ int main(void)
 		if (game.getScore() >= lvlScores[2] && game.getScore() <= lvlScores[3] && max_level < 3)
 		{
 			max_level++;
-			std::cout << "LEVEL 3" << std::endl;
+			std::cout << "|-------------------------|" << std::endl;
+			std::cout << "|                         |" << std::endl;
+			std::cout << "|         LEVEL 3         |" << std::endl;
+			std::cout << "|                         |" << std::endl;
+			std::cout << "|-------------------------|" << std::endl;
 			game.setLevel(lvls[3]);
 
 			asteroid1.asteroidLevelUp();
@@ -573,7 +589,11 @@ int main(void)
 		if (game.getScore() >= lvlScores[3] && game.getScore() <= lvlScores[4] && max_level < 4)
 		{
 			max_level++;
-			std::cout << "LEVEL 4" << std::endl;
+			std::cout << "|-------------------------|" << std::endl;
+			std::cout << "|                         |" << std::endl;
+			std::cout << "|         LEVEL 4         |" << std::endl;
+			std::cout << "|                         |" << std::endl;
+			std::cout << "|-------------------------|" << std::endl;
 			game.setLevel(lvls[4]);
 
 			asteroid1.asteroidLevelUp();
@@ -593,7 +613,11 @@ int main(void)
 		if (game.getScore() >= lvlScores[4] && max_level < 5)
 		{
 			max_level++;
-			std::cout << "MAX LEVEL" << std::endl;
+			std::cout << "|-------------------------|" << std::endl;
+			std::cout << "|                         |" << std::endl;
+			std::cout << "|      MAXIMUM LEVEL      |" << std::endl;
+			std::cout << "|                         |" << std::endl;
+			std::cout << "|-------------------------|" << std::endl;
 			game.setLevel(lvls[5]);
 
 			asteroid1.asteroidLevelUp();
@@ -633,6 +657,11 @@ int main(void)
 				{
 					game.setScore(game.getScore() + 100);
 					//std::cout << "SCORE: " << game.getScore() << std::endl;
+					if (game.getLevel() == 0)
+						std::cout << "|DAMAGE: " << 1 << std::endl;
+					else
+						std::cout << "|DAMAGE: " << 200 * game.getLevel() << std::endl;
+
 					asteroid1.spawnAsteroid(trans, programIDAst, -0.8, -0.6, game.getLevel());
 				}
 
@@ -642,7 +671,10 @@ int main(void)
 			{
 				starship.setStarshipHP(starship.getStarshipHP() - 1);
 				asteroid1.spawnAsteroid(trans, programIDAst, -0.8, -0.6, game.getLevel());
-				std::cout << starship.getStarshipHP() << std::endl;
+				//std::cout << starship.getStarshipHP() << std::endl;
+				std::cout << "|-------------------------|" << std::endl;
+				std::cout << "|SCORE: " << game.getScore() << std::endl;
+				std::cout << "|HP: " << starship.getStarshipHP() << std::endl;
 
 			}
 
@@ -668,6 +700,11 @@ int main(void)
 				{
 					game.setScore(game.getScore() + 100);
 					//std::cout << "SCORE: " << game.getScore() << std::endl;
+					if(game.getLevel() == 0)
+						std::cout << "|DAMAGE: " << 1 << std::endl;
+					else
+						std::cout << "|DAMAGE: " << 200 * game.getLevel() << std::endl;
+
 					asteroid1mini.spawnAsteroid(trans, programIDAstMini, -0.5, -0.4, game.getLevel());
 				}
 
@@ -677,7 +714,10 @@ int main(void)
 			{
 				starship.setStarshipHP(starship.getStarshipHP() - 1);
 				asteroid1mini.spawnAsteroid(trans, programIDAstMini, -0.5, -0.4, game.getLevel());
-				std::cout << starship.getStarshipHP() << std::endl;
+				//std::cout << starship.getStarshipHP() << std::endl;
+				std::cout << "|-------------------------|" << std::endl;
+				std::cout << "|SCORE: " << game.getScore() << std::endl;
+				std::cout << "|HP: " << starship.getStarshipHP() << std::endl;
 
 			}
 
@@ -708,6 +748,11 @@ int main(void)
 				{
 					game.setScore(game.getScore() + 100);
 					//std::cout << "SCORE: " << game.getScore() << std::endl;
+					if (game.getLevel() == 0)
+						std::cout << "|DAMAGE: " << 1 << std::endl;
+					else
+						std::cout << "|DAMAGE: " << 200 * game.getLevel() << std::endl;
+
 					asteroid2.spawnAsteroid(trans, programIDAst, -0.2, 0.0, game.getLevel());
 				}
 
@@ -717,7 +762,10 @@ int main(void)
 			{
 				starship.setStarshipHP(starship.getStarshipHP() - 1);
 				asteroid2.spawnAsteroid(trans, programIDAst2, -0.2, 0.0, game.getLevel());
-				std::cout << starship.getStarshipHP() << std::endl;
+				//std::cout << starship.getStarshipHP() << std::endl;
+				std::cout << "|-------------------------|" << std::endl;
+				std::cout << "|SCORE: " << game.getScore() << std::endl;
+				std::cout << "|HP: " << starship.getStarshipHP() << std::endl;
 			}
 
 			asteroid2.despawnAsteroid(trans, programIDAst2, -0.2, 0.0, game.getLevel());
@@ -742,6 +790,11 @@ int main(void)
 				{
 					game.setScore(game.getScore() + 100);
 					//std::cout << "SCORE: " << game.getScore() << std::endl;
+					if (game.getLevel() == 0)
+						std::cout << "|DAMAGE: " << 1 << std::endl;
+					else
+						std::cout << "|DAMAGE: " << 200 * game.getLevel() << std::endl;
+
 					asteroid2mini.spawnAsteroid(trans, programIDAstMini2, 0.1, 0.2, game.getLevel());
 				}
 
@@ -751,7 +804,10 @@ int main(void)
 			{
 				starship.setStarshipHP(starship.getStarshipHP() - 1);
 				asteroid2mini.spawnAsteroid(trans, programIDAstMini2, 0.1, 0.2, game.getLevel());
-				std::cout << starship.getStarshipHP() << std::endl;
+				//std::cout << starship.getStarshipHP() << std::endl;
+				std::cout << "|-------------------------|" << std::endl;
+				std::cout << "|SCORE: " << game.getScore() << std::endl;
+				std::cout << "|HP: " << starship.getStarshipHP() << std::endl;
 
 			}
 
@@ -780,6 +836,11 @@ int main(void)
 				{
 					game.setScore(game.getScore() + 100);
 					//std::cout << "SCORE: " << game.getScore() << std::endl;
+					if (game.getLevel() == 0)
+						std::cout << "|DAMAGE: " << 1 << std::endl;
+					else
+						std::cout << "|DAMAGE: " << 200 * game.getLevel() << std::endl;
+
 					asteroid3.spawnAsteroid(trans, programIDAst, 0.4, 0.6, game.getLevel());
 				}
 
@@ -789,7 +850,10 @@ int main(void)
 			{
 				starship.setStarshipHP(starship.getStarshipHP() - 1);
 				asteroid3.spawnAsteroid(trans, programIDAst3, 0.4, 0.6, game.getLevel());
-				std::cout << starship.getStarshipHP() << std::endl;
+				//std::cout << starship.getStarshipHP() << std::endl;
+				std::cout << "|-------------------------|" << std::endl;
+				std::cout << "|SCORE: " << game.getScore() << std::endl;
+				std::cout << "|HP: " << starship.getStarshipHP() << std::endl;
 			}
 
 			asteroid3.despawnAsteroid(trans, programIDAst3, 0.4, 0.6, game.getLevel());
@@ -814,6 +878,10 @@ int main(void)
 				{
 					game.setScore(game.getScore() + 100);
 					//std::cout << "SCORE: " << game.getScore() << std::endl;
+					if (game.getLevel() == 0)
+						std::cout << "|DAMAGE: " << 1 << std::endl;
+					else
+						std::cout << "|DAMAGE: " << 200 * game.getLevel() << std::endl;
 					asteroid3mini.spawnAsteroid(trans, programIDAstMini3, 0.7, 0.8, game.getLevel());
 				}
 
@@ -823,7 +891,10 @@ int main(void)
 			{
 				starship.setStarshipHP(starship.getStarshipHP() - 1);
 				asteroid3mini.spawnAsteroid(trans, programIDAstMini3, 0.7, 0.8, game.getLevel());
-				std::cout << starship.getStarshipHP() << std::endl;
+				//std::cout << starship.getStarshipHP() << std::endl;
+				std::cout << "|-------------------------|" << std::endl;
+				std::cout << "|SCORE: " << game.getScore() << std::endl;
+				std::cout << "|HP: " << starship.getStarshipHP() << std::endl;
 
 			}
 
@@ -842,8 +913,6 @@ int main(void)
 		glUseProgram(programIDHealth);
 		glBindVertexArray(VAOHealth);
 
-
-
 		trans = glm::mat4(1.0f);
 
 		if (health.getHealthHP())
@@ -856,7 +925,10 @@ int main(void)
 			{
 				starship.setStarshipHP(starship.getStarshipHP() + 1);
 				health.spawnHealth(trans, programIDHealth);
-				std::cout << starship.getStarshipHP() << std::endl;
+				//std::cout << starship.getStarshipHP() << std::endl;
+				std::cout << "|-------------------------|" << std::endl;
+				std::cout << "|SCORE: " << game.getScore() << std::endl;
+				std::cout << "|HP: " << starship.getStarshipHP() << std::endl;
 
 			}
 

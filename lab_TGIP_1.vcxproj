@@ -28,7 +28,23 @@
     <ClCompile Include="Ship\starship.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shaders\SimpleFragmentShader.fragmentshader" />
+    <None Include="Shaders\SimpleFragmentShaderAst.fragmentshader" />
+    <None Include="Shaders\SimpleFragmentShaderAst2.fragmentshader" />
+    <None Include="Shaders\SimpleFragmentShaderAst3.fragmentshader" />
+    <None Include="Shaders\SimpleFragmentShaderAstMini.fragmentshader" />
+    <None Include="Shaders\SimpleFragmentShaderAstMini2.fragmentshader" />
+    <None Include="Shaders\SimpleFragmentShaderAstMini3.fragmentshader" />
+    <None Include="Shaders\SimpleFragmentShaderBlaster.fragmentshader" />
     <None Include="Shaders\SimpleFragmentShaderHealth.fragmentshader" />
+    <None Include="Shaders\SimpleVertexShader.vertexshader" />
+    <None Include="Shaders\SimpleVertexShaderAst.vertexshader" />
+    <None Include="Shaders\SimpleVertexShaderAst2.vertexshader" />
+    <None Include="Shaders\SimpleVertexShaderAst3.vertexshader" />
+    <None Include="Shaders\SimpleVertexShaderAstMini.vertexshader" />
+    <None Include="Shaders\SimpleVertexShaderAstMini2.vertexshader" />
+    <None Include="Shaders\SimpleVertexShaderAstMini3.vertexshader" />
+    <None Include="Shaders\SimpleVertexShaderBlaster.vertexshader" />
     <None Include="Shaders\SimpleVertexShaderHealth.vertexshader" />
     <None Include="SimpleFragmentShader.fragmentshader" />
     <None Include="SimpleFragmentShaderAst.fragmentshader" />
