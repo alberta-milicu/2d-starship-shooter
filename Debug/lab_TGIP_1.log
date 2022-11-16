@@ -1,5 +1,8 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ACG_Lab3.vcxproj, ACG_Lab4.vcxproj, ACG_Lab5.vcxproj, lab_TGIP_1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
           1 file(s) copied.
           1 file(s) copied.
-  main.cpp
+  asteroid.cpp
+C:\Uni\Graphics\ACG BIG HW 2D GAME\Asteroid\asteroid.cpp(70,50): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\Asteroid\asteroid.cpp(87,50): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\Asteroid\asteroid.cpp(105,49): warning C4305: 'argument': truncation from 'double' to 'float'
   lab_TGIP_1.vcxproj -> C:\Uni\Graphics\ACG BIG HW 2D GAME\Debug\ACG_Big.exe

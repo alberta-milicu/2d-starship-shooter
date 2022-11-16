@@ -13,28 +13,34 @@ class Starship
 	private: 
 		glm::vec3 starshipPosition;
 		int HP;
+		float speed;
 
 	public:
 		Starship();
-		Starship(glm::vec3 starshipPosition, int HP);
+		Starship(glm::vec3 starshipPosition, int HP, float speed);
 		~Starship();
 
 		void applyTrans(glm::mat4 trans, GLuint programID);
 
-		void moveUp(GLFWwindow* window, float unit, GLuint programID);
-		void moveDown(GLFWwindow* window, float unit, GLuint programID);
-		void moveLeft(GLFWwindow* window, float unit, GLuint programID);
-		void moveRight(GLFWwindow* window, float unit, GLuint programID);
+		void moveUp(GLFWwindow* window, GLuint programID);
+		void moveDown(GLFWwindow* window, GLuint programID);
+		void moveLeft(GLFWwindow* window, GLuint programID);
+		void moveRight(GLFWwindow* window, GLuint programID);
 
-		void checkMotion(GLFWwindow* window, float unit, GLuint programID);
+		void checkMotion(GLFWwindow* window, GLuint programID);
+
+		void starshipLevelUp();
 
 		glm::vec3 getStarshipPosition();
 		float getStarshipPositionX();
 		float getStarshipPositionY();
 		int getStarshipHP();
+		float getStarshipSpeed();
 
 		void setStarshipPosition(glm::vec3 starshipPosition);
 		void setStarshipPositionX(float x);
 		void setStarshipPositionY(float y);
 		void setStarshipHP(int HP);
+		void setStarshipSpeed(float speed);
+
 };

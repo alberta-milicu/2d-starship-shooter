@@ -19,6 +19,65 @@
 GLFWwindow* window;
 const int width = 728, height = 728;
 
+static int max_level = -1;
+
+int lvl1Score = 25000;
+int lvl2Score = 75000;
+int lvl3Score = 150000;
+int lvl4Score = 250000;
+int lvl5Score = 400000;
+
+int lvlScores[5] = { lvl1Score, lvl2Score, lvl3Score, lvl4Score, lvl5Score };
+int lvls[6] = { 0, 1, 2, 3, 4, 5 };
+
+//void display(Game game)
+//{
+	
+	//if (game.getScore() < lvlScores[0] && max_level < 0)
+	//{
+	//	max_level++;
+	//	std::cout << "LEVEL 0" << std::endl;
+	//	game.setLevel(lvls[0]);
+
+	//}
+
+	//if (game.getScore() >= lvlScores[0] && game.getScore() <= lvlScores[1] && max_level < 1)
+	//{
+	//	max_level++;
+	//	std::cout << "LEVEL 1" << std::endl;
+	//	game.setLevel(lvls[1]);
+
+	//}
+
+	//if (game.getScore() >= lvlScores[1] && game.getScore() <= lvlScores[2] && max_level < 2)
+	//{
+	//	max_level++;
+	//	std::cout << "LEVEL 2" << std::endl;
+	//	game.setLevel(lvls[2]);
+	//}
+
+	//if (game.getScore() >= lvlScores[2] && game.getScore() <= lvlScores[3] && max_level < 3)
+	//{
+	//	max_level++;
+	//	std::cout << "LEVEL 3" << std::endl;
+	//	game.setLevel(lvls[3]);
+	//}
+
+	//if (game.getScore() >= lvlScores[3] && game.getScore() <= lvlScores[4] && max_level < 4)
+	//{
+	//	max_level++;
+	//	std::cout << "LEVEL 4" << std::endl;
+	//	game.setLevel(lvls[4]);
+	//}
+
+	//if (game.getScore() >= lvlScores[4] && max_level < 5)
+	//{
+	//	max_level++;
+	//	std::cout << "MAX LEVEL" << std::endl;
+	//	game.setLevel(lvls[5]);
+	//}
+//}
+
 
 void window_callback(GLFWwindow* window, int new_width, int new_height)
 {
@@ -51,15 +110,6 @@ int main(void)
 		glfwTerminate();
 		return -1;
 	}
-
-
-	/*Starship starship(glm::vec3(0.0f, -0.5f, 0.0f));
-	Asteroid asteroid1(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
-	Game game(window);*/
-
-	float unit = 0.0005f;
-	float fallSpeed = 0.0001f;
-
 
 	glViewport(0, 0, width, height);
 
@@ -106,15 +156,17 @@ int main(void)
 	GLuint programIDAst = LoadShaders("SimpleVertexShaderAst.vertexshader", "SimpleFragmentShaderAst.fragmentshader");
 
 	GLfloat verticesAst[] = {
-	-0.2f,  0.2f, 1.0f, 0.0f, 0.0f, // Top-left
-	 0.2f,  0.2f, 0.0f, 1.0f, 0.0f, // Top-right
-	 0.2f, -0.2f, 0.0f, 0.0f, 1.0f, // Bottom-right
-	-0.2f, -0.2f, 1.0f, 1.0f, 1.0f  // Bottom-left
+	0.0f,   0.0f, 0.0f,    //center
+	-0.075f,   0.15f, 0.0f,    // left top
+	0.075f,   0.15f, 0.0f,    // right top
+	0.15f,   0.0f, 0.0f,    // right
+	0.075f,   -0.15f, 0.0f,    // right bottom (notice sign)
+	-0.075f,  -0.15f, 0.0f,    // left bottom
+	-0.15f,   0.0f, 0.0f     // left
 
 	};
 	GLuint indicesAst[] = {
-		0,1,2,
-		1,3,2
+		0, 1, 2, 3, 4, 5, 6, 1
 	};
 
 
@@ -147,15 +199,17 @@ int main(void)
 	GLuint programIDAst2 = LoadShaders("SimpleVertexShaderAst2.vertexshader", "SimpleFragmentShaderAst2.fragmentshader");
 
 	GLfloat verticesAst2[] = {
-	-0.2f,  0.2f, 1.0f, 0.0f, 0.0f, // Top-left
-	 0.2f,  0.2f, 0.0f, 1.0f, 0.0f, // Top-right
-	 0.2f, -0.2f, 0.0f, 0.0f, 1.0f, // Bottom-right
-	-0.2f, -0.2f, 1.0f, 1.0f, 1.0f  // Bottom-left
+	0.0f,   0.0f, 0.0f,    //center
+	-0.075f,   0.15f, 0.0f,    // left top
+	0.075f,   0.15f, 0.0f,    // right top
+	0.15f,   0.0f, 0.0f,    // right
+	0.075f,   -0.15f, 0.0f,    // right bottom (notice sign)
+	-0.075f,  -0.15f, 0.0f,    // left bottom
+	-0.15f,   0.0f, 0.0f     // left
 
 	};
 	GLuint indicesAst2[] = {
-		0,1,2,
-		1,3,2
+		0, 1, 2, 3, 4, 5, 6, 1
 	};
 
 
@@ -187,15 +241,17 @@ int main(void)
 	GLuint programIDAst3 = LoadShaders("SimpleVertexShaderAst3.vertexshader", "SimpleFragmentShaderAst3.fragmentshader");
 
 	GLfloat verticesAst3[] = {
-	-0.2f,  0.2f, 1.0f, 0.0f, 0.0f, // Top-left
-	 0.2f,  0.2f, 0.0f, 1.0f, 0.0f, // Top-right
-	 0.2f, -0.2f, 0.0f, 0.0f, 1.0f, // Bottom-right
-	-0.2f, -0.2f, 1.0f, 1.0f, 1.0f  // Bottom-left
+	0.0f,   0.0f, 0.0f,    //center
+	-0.075f,   0.15f, 0.0f,    // left top
+	0.075f,   0.15f, 0.0f,    // right top
+	0.15f,   0.0f, 0.0f,    // right
+	0.075f,   -0.15f, 0.0f,    // right bottom (notice sign)
+	-0.075f,  -0.15f, 0.0f,    // left bottom
+	-0.15f,   0.0f, 0.0f     // left
 
 	};
 	GLuint indicesAst3[] = {
-		0,1,2,
-		1,3,2
+		0, 1, 2, 3, 4, 5, 6, 1
 	};
 
 
@@ -229,12 +285,17 @@ int main(void)
 	glfwSetFramebufferSizeCallback(window, window_callback);
 	int drawAsteroidOk = 1;
 
-	Starship starship(glm::vec3(0.0f, -0.5f, 0.0f),5);
+	float unit = 0.0005f;
+	//float fallSpeed = 0.0001f;
+
+	Starship starship(glm::vec3(0.0f, -0.5f, 0.0f),10, 0.001f);
 	Asteroid asteroid1(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
 	Asteroid asteroid2(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
 	Asteroid asteroid3(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
+
+	int score = 0, level = 0;
 	
-	Game game(window);
+	Game game(window,score,level);
 
 	while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0 &&
 		starship.getStarshipHP()) {
@@ -249,10 +310,83 @@ int main(void)
 		glUseProgram(programID);
 		glBindVertexArray(VAO);
 
+		
+		if (game.getScore() < lvlScores[0] && max_level < 0)
+		{
+			max_level++;
+			std::cout << "LEVEL 0" << std::endl;
+			game.setLevel(lvls[0]);
 
-		starship.checkMotion(window, unit, programID);
+		}
+
+		if (game.getScore() >= lvlScores[0] && game.getScore() <= lvlScores[1] && max_level < 1)
+		{
+			max_level++;
+			std::cout << "LEVEL 1" << std::endl;
+			game.setLevel(lvls[1]);
+			asteroid1.asteroidLevelUp();
+			asteroid2.asteroidLevelUp();
+			asteroid3.asteroidLevelUp();
+
+			starship.starshipLevelUp();
+
+		}
+
+		if (game.getScore() >= lvlScores[1] && game.getScore() <= lvlScores[2] && max_level < 2)
+		{
+			max_level++;
+			std::cout << "LEVEL 2" << std::endl;
+			game.setLevel(lvls[2]);
+			asteroid1.asteroidLevelUp();
+			asteroid2.asteroidLevelUp();
+			asteroid3.asteroidLevelUp();
+
+			starship.starshipLevelUp();
+		}
+
+		if (game.getScore() >= lvlScores[2] && game.getScore() <= lvlScores[3] && max_level < 3)
+		{
+			max_level++;
+			std::cout << "LEVEL 3" << std::endl;
+			game.setLevel(lvls[3]);
+			asteroid1.asteroidLevelUp();
+			asteroid2.asteroidLevelUp();
+			asteroid3.asteroidLevelUp();
+
+			starship.starshipLevelUp();
+		}
+
+		if (game.getScore() >= lvlScores[3] && game.getScore() <= lvlScores[4] && max_level < 4)
+		{
+			max_level++;
+			std::cout << "LEVEL 4" << std::endl;
+			game.setLevel(lvls[4]);
+			asteroid1.asteroidLevelUp();
+			asteroid2.asteroidLevelUp();
+			asteroid3.asteroidLevelUp();
+
+			starship.starshipLevelUp();
+		}
+
+		if (game.getScore() >= lvlScores[4] && max_level < 5)
+		{
+			max_level++;
+			std::cout << "MAX LEVEL" << std::endl;
+			game.setLevel(lvls[5]);
+			asteroid1.asteroidLevelUp();
+			asteroid2.asteroidLevelUp();
+			asteroid3.asteroidLevelUp();
+
+			starship.starshipLevelUp();
+		}
 
 
+
+		std::cout << game.getLevel() << std::endl;
+
+		starship.checkMotion(window, programID);
+
+		
 
 		glUseProgram(programIDAst);
 		glBindVertexArray(VAOAst);
@@ -272,15 +406,20 @@ int main(void)
 				asteroid1.setAsteroidHP(asteroid1.getAsteroidHP()-1);
 
 				if (!asteroid1.getAsteroidHP())
+				{
+					game.setScore(game.getScore() + 100);
+					//std::cout << "SCORE: " << game.getScore() << std::endl;
 					asteroid1.spawnAsteroid1(trans, programIDAst);
+				}
 
 			}
 
 			if (game.checkGotShot(starship, asteroid1))
 			{
 				starship.setStarshipHP(starship.getStarshipHP() - 1);
-				asteroid1.spawnAsteroid2(trans, programIDAst);
+				asteroid1.spawnAsteroid1(trans, programIDAst);
 				std::cout << starship.getStarshipHP() << std::endl;
+
 			}
 
 		asteroid1.despawnAsteroid1(trans, programIDAst);
@@ -305,7 +444,11 @@ int main(void)
 				asteroid2.setAsteroidHP(asteroid2.getAsteroidHP() - 1);
 
 				if (!asteroid2.getAsteroidHP())
-					asteroid2.spawnAsteroid2(trans, programIDAst2);
+				{
+					game.setScore(game.getScore() + 100);
+					//std::cout << "SCORE: " << game.getScore() << std::endl;
+					asteroid2.spawnAsteroid2(trans, programIDAst);
+				}
 
 			}
 
@@ -338,7 +481,11 @@ int main(void)
 				asteroid3.setAsteroidHP(asteroid3.getAsteroidHP() - 1);
 
 				if (!asteroid3.getAsteroidHP())
-					asteroid3.spawnAsteroid3(trans, programIDAst3);
+				{
+					game.setScore(game.getScore() + 100);
+					//std::cout << "SCORE: " << game.getScore() << std::endl;
+					asteroid3.spawnAsteroid3(trans, programIDAst);
+				}
 
 			}
 

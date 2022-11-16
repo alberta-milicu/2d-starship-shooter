@@ -22,7 +22,7 @@ public:
 
 	void applyTrans(glm::mat4 trans, GLuint programID);
 	void applyRotation(glm::mat4 trans, GLuint programID);
-	void moveDown(float unit, GLuint programID);
+	void moveDown(GLuint programID);
 	void checkMotion(GLuint programID,GLuint VAO);
 	void shootDown();
 
@@ -33,6 +33,8 @@ public:
 	void despawnAsteroid1(glm::mat4 trans, GLuint programID);
 	void despawnAsteroid2(glm::mat4 trans, GLuint programID);
 	void despawnAsteroid3(glm::mat4 trans, GLuint programID);
+	
+	void asteroidLevelUp();
 
 	//void applyRot(glm::mat4 trans, GLuint programID);
 
@@ -40,9 +42,11 @@ public:
 	float getAsteroidPositionX();
 	float getAsteroidPositionY();
 	int getAsteroidHP();
+	float getFallSpeed();
 
 	void setAsteroidPosition(glm::vec3 asteroidPosition);
 	void setAsteroidPositionX(float x);
 	void setAsteroidPositionY(float y);
 	void setAsteroidHP(int HP);
+	void setFallSpeed(float fallSpeed);
 };

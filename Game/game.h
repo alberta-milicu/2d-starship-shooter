@@ -18,11 +18,21 @@ class Game
 {
 private:
 	GLFWwindow* window;
+	int score;
+	int level;
 
 public:
-	Game(GLFWwindow* window);
+	Game(GLFWwindow* window, int score, int level);
 	~Game();
 
 	int checkShoot(Starship starship, Asteroid asteroid);
 	int checkGotShot(Starship starship, Asteroid asteroid);
+
+	GLFWwindow* getWindow();
+	int getScore();
+	int getLevel();
+
+	void setWindow(GLFWwindow* window);
+	void setScore(int score);
+	void setLevel(int level);
 };

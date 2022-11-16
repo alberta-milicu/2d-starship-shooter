@@ -1,9 +1,12 @@
 #include "starship.h"
 
-Starship::Starship(glm::vec3 starshipPosition, int HP)
+int MAX_HP = 10;
+
+Starship::Starship(glm::vec3 starshipPosition, int HP, float speed)
 {
 	this->starshipPosition = starshipPosition;
 	this->HP = HP;
+	this->speed = speed;
 }
 
 Starship::Starship()
@@ -22,57 +25,62 @@ void Starship::applyTrans(glm::mat4 trans, GLuint programID)
 	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 }
 
-void Starship::moveUp(GLFWwindow* window, float unit, GLuint programID)
+void Starship::moveUp(GLFWwindow* window, GLuint programID)
 {
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS && this->getStarshipPositionY() < 1) {
 
 		glm::mat4 trans(1.0f);
-		this->setStarshipPositionY(this->getStarshipPositionY() + unit);
+		this->setStarshipPositionY(this->getStarshipPositionY() + this->getStarshipSpeed());
 		this->applyTrans(trans, programID);
 
 	}
 }
 
-void Starship::moveDown(GLFWwindow* window, float unit, GLuint programID)
+void Starship::moveDown(GLFWwindow* window, GLuint programID)
 {
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS && this->getStarshipPositionY() > -1) {
 
 		glm::mat4 trans(1.0f);
-		this->setStarshipPositionY(this->getStarshipPositionY() - unit);
+		this->setStarshipPositionY(this->getStarshipPositionY() - this->getStarshipSpeed());
 		this->applyTrans(trans, programID);
 
 	}
 }
 
-void Starship::moveLeft(GLFWwindow* window, float unit, GLuint programID)
+void Starship::moveLeft(GLFWwindow* window, GLuint programID)
 {
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS && this->getStarshipPositionX() > -1) {
 
 		glm::mat4 trans(1.0f);
-		this->setStarshipPositionX(this->getStarshipPositionX() - unit);
+		this->setStarshipPositionX(this->getStarshipPositionX() - this->getStarshipSpeed());
 		this->applyTrans(trans, programID);
 
 	}
 }
 
-void Starship::moveRight(GLFWwindow* window, float unit, GLuint programID)
+void Starship::moveRight(GLFWwindow* window, GLuint programID)
 {
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS && this->getStarshipPositionX() < 1) {
 
 		glm::mat4 trans(1.0f);
-		this->setStarshipPositionX(this->getStarshipPositionX() + unit);
+		this->setStarshipPositionX(this->getStarshipPositionX() + this->getStarshipSpeed());
 		this->applyTrans(trans, programID);
 
 	}
 }
 
-void Starship::checkMotion(GLFWwindow* window, float unit, GLuint programID)
+void Starship::checkMotion(GLFWwindow* window, GLuint programID)
 {
-	this->moveUp(window, unit, programID);
-	this->moveDown(window, unit, programID);
-	this->moveLeft(window, unit, programID);
-	this->moveRight(window, unit, programID);
+	this->moveUp(window, programID);
+	this->moveDown(window, programID);
+	this->moveLeft(window, programID);
+	this->moveRight(window, programID);
 	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+}
+
+void Starship::starshipLevelUp()
+{
+	this->setStarshipHP(MAX_HP);
 }
 
 glm::vec3 Starship::getStarshipPosition()
@@ -95,6 +103,11 @@ int Starship::getStarshipHP()
 	return this->HP;
 }
 
+float Starship::getStarshipSpeed()
+{
+	return this->speed;
+}
+
 void Starship::setStarshipPosition(glm::vec3 starshipPosition)
 {
 	this->starshipPosition = starshipPosition;
@@ -113,4 +126,8 @@ void Starship::setStarshipPositionY(float y)
 void Starship::setStarshipHP(int HP)
 {
 	this->HP = HP;
+}
+void Starship::setStarshipSpeed(float speed)
+{
+	this->speed = speed;
 }

@@ -23,9 +23,11 @@ int computePositionEquityY(Starship starship, Asteroid asteroid)
 	return 0;
 }
 
-Game::Game(GLFWwindow* window)
+Game::Game(GLFWwindow* window, int score, int level)
 {
 	this->window = window;
+	this->score = score;
+	this->level = level;
 }
 
 Game::~Game()
@@ -47,4 +49,35 @@ int Game::checkGotShot(Starship starship, Asteroid asteroid)
 	if (computePositionRelativityX(starship, asteroid) && computePositionEquityY(starship, asteroid))
 		return 1;
 	return 0;
+}
+
+
+GLFWwindow* Game::getWindow()
+{
+	return this->window;
+}
+
+int Game::getScore()
+{
+	return this->score;
+}
+
+int Game::getLevel()
+{
+	return this->level;
+}
+
+void Game::setWindow(GLFWwindow* window)
+{
+	this->window = window;
+}
+
+void Game::setScore(int score)
+{
+	this->score = score;
+}
+
+void Game::setLevel(int level)
+{
+	this->level = level;
 }
