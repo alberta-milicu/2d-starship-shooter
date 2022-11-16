@@ -1,8 +1,9 @@
 #include "starship.h"
 
-Starship::Starship(glm::vec3 starshipPosition)
+Starship::Starship(glm::vec3 starshipPosition, int HP)
 {
 	this->starshipPosition = starshipPosition;
+	this->HP = HP;
 }
 
 Starship::Starship()
@@ -89,6 +90,11 @@ float Starship::getStarshipPositionY()
 	return this->starshipPosition.y;
 }
 
+int Starship::getStarshipHP()
+{
+	return this->HP;
+}
+
 void Starship::setStarshipPosition(glm::vec3 starshipPosition)
 {
 	this->starshipPosition = starshipPosition;
@@ -102,4 +108,9 @@ void Starship::setStarshipPositionX(float x)
 void Starship::setStarshipPositionY(float y)
 {
 	this->starshipPosition.y = y;
+}
+
+void Starship::setStarshipHP(int HP)
+{
+	this->HP = HP;
 }

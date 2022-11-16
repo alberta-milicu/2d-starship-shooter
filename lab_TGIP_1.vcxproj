@@ -28,8 +28,12 @@
   <ItemGroup>
     <None Include="SimpleFragmentShader.fragmentshader" />
     <None Include="SimpleFragmentShaderAst.fragmentshader" />
+    <None Include="SimpleFragmentShaderAst2.fragmentshader" />
+    <None Include="SimpleFragmentShaderAst3.fragmentshader" />
     <None Include="SimpleVertexShader.vertexshader" />
     <None Include="SimpleVertexShaderAst.vertexshader" />
+    <None Include="SimpleVertexShaderAst2.vertexshader" />
+    <None Include="SimpleVertexShaderAst3.vertexshader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asteroid\asteroid.h" />

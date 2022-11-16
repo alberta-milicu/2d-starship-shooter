@@ -12,10 +12,11 @@ class Starship
 {
 	private: 
 		glm::vec3 starshipPosition;
+		int HP;
 
 	public:
 		Starship();
-		Starship(glm::vec3 starshipPosition);
+		Starship(glm::vec3 starshipPosition, int HP);
 		~Starship();
 
 		void applyTrans(glm::mat4 trans, GLuint programID);
@@ -30,8 +31,10 @@ class Starship
 		glm::vec3 getStarshipPosition();
 		float getStarshipPositionX();
 		float getStarshipPositionY();
+		int getStarshipHP();
 
 		void setStarshipPosition(glm::vec3 starshipPosition);
 		void setStarshipPositionX(float x);
 		void setStarshipPositionY(float y);
+		void setStarshipHP(int HP);
 };
