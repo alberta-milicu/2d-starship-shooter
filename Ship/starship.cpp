@@ -2,11 +2,12 @@
 
 int MAX_HP = 10;
 
-Starship::Starship(glm::vec3 starshipPosition, int HP, float speed)
+Starship::Starship(glm::vec3 starshipPosition, int HP, float speed, Blaster blaster)
 {
 	this->starshipPosition = starshipPosition;
 	this->HP = HP;
 	this->speed = speed;
+	this->blaster = blaster;
 }
 
 Starship::Starship()
@@ -108,6 +109,11 @@ float Starship::getStarshipSpeed()
 	return this->speed;
 }
 
+Blaster Starship::getStarshipBlaster()
+{
+	return this->blaster;
+}
+
 void Starship::setStarshipPosition(glm::vec3 starshipPosition)
 {
 	this->starshipPosition = starshipPosition;
@@ -130,4 +136,9 @@ void Starship::setStarshipHP(int HP)
 void Starship::setStarshipSpeed(float speed)
 {
 	this->speed = speed;
+}
+
+void Starship::setStarshipBlaster(Blaster blaster)
+{
+	this->blaster = blaster;
 }

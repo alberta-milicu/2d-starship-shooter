@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asteroid\asteroid.cpp" />
+    <ClCompile Include="Blaster\blaster.cpp" />
     <ClCompile Include="Game\game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader.cpp" />
@@ -33,6 +34,7 @@
     <None Include="SimpleFragmentShaderAstMini.fragmentshader" />
     <None Include="SimpleFragmentShaderAstMini2.fragmentshader" />
     <None Include="SimpleFragmentShaderAstMini3.fragmentshader" />
+    <None Include="SimpleFragmentShaderBlaster.fragmentshader" />
     <None Include="SimpleVertexShader.vertexshader" />
     <None Include="SimpleVertexShaderAst.vertexshader" />
     <None Include="SimpleVertexShaderAst2.vertexshader" />
@@ -40,9 +42,11 @@
     <None Include="SimpleVertexShaderAstMini.vertexshader" />
     <None Include="SimpleVertexShaderAstMini2.vertexshader" />
     <None Include="SimpleVertexShaderAstMini3.vertexshader" />
+    <None Include="SimpleVertexShaderBlaster.vertexshader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asteroid\asteroid.h" />
+    <ClInclude Include="Blaster\blaster.h" />
     <ClInclude Include="Game\game.h" />
     <ClInclude Include="Ship\starship.h" />
   </ItemGroup>

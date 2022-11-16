@@ -1,26 +1,24 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ACG_Lab3.vcxproj, ACG_Lab4.vcxproj, ACG_Lab5.vcxproj, lab_TGIP_1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
           1 file(s) copied.
           1 file(s) copied.
-  asteroid.cpp
-C:\Uni\Graphics\ACG BIG HW 2D GAME\Asteroid\asteroid.cpp(95,43): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   main.cpp
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(564,60): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(572,60): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(577,60): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(599,69): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(607,68): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(612,69): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(639,60): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(647,60): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(651,61): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(673,68): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(681,67): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(686,68): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(711,59): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(719,59): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(723,60): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(745,68): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(753,67): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(758,68): warning C4305: 'argument': truncation from 'double' to 'float'
-  Generating Code...
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(133,2): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(587,60): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(595,60): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(600,60): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(622,69): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(630,68): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(635,69): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(662,60): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(670,60): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(674,61): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(696,68): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(704,67): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(709,68): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(734,59): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(742,59): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(746,60): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(768,68): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(776,67): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Uni\Graphics\ACG BIG HW 2D GAME\main.cpp(781,68): warning C4305: 'argument': truncation from 'double' to 'float'
   lab_TGIP_1.vcxproj -> C:\Uni\Graphics\ACG BIG HW 2D GAME\Debug\ACG_Big.exe

@@ -30,54 +30,6 @@ int lvl5Score = 400000;
 int lvlScores[5] = { lvl1Score, lvl2Score, lvl3Score, lvl4Score, lvl5Score };
 int lvls[6] = { 0, 1, 2, 3, 4, 5 };
 
-//void display(Game game)
-//{
-	
-	//if (game.getScore() < lvlScores[0] && max_level < 0)
-	//{
-	//	max_level++;
-	//	std::cout << "LEVEL 0" << std::endl;
-	//	game.setLevel(lvls[0]);
-
-	//}
-
-	//if (game.getScore() >= lvlScores[0] && game.getScore() <= lvlScores[1] && max_level < 1)
-	//{
-	//	max_level++;
-	//	std::cout << "LEVEL 1" << std::endl;
-	//	game.setLevel(lvls[1]);
-
-	//}
-
-	//if (game.getScore() >= lvlScores[1] && game.getScore() <= lvlScores[2] && max_level < 2)
-	//{
-	//	max_level++;
-	//	std::cout << "LEVEL 2" << std::endl;
-	//	game.setLevel(lvls[2]);
-	//}
-
-	//if (game.getScore() >= lvlScores[2] && game.getScore() <= lvlScores[3] && max_level < 3)
-	//{
-	//	max_level++;
-	//	std::cout << "LEVEL 3" << std::endl;
-	//	game.setLevel(lvls[3]);
-	//}
-
-	//if (game.getScore() >= lvlScores[3] && game.getScore() <= lvlScores[4] && max_level < 4)
-	//{
-	//	max_level++;
-	//	std::cout << "LEVEL 4" << std::endl;
-	//	game.setLevel(lvls[4]);
-	//}
-
-	//if (game.getScore() >= lvlScores[4] && max_level < 5)
-	//{
-	//	max_level++;
-	//	std::cout << "MAX LEVEL" << std::endl;
-	//	game.setLevel(lvls[5]);
-	//}
-//}
-
 
 void window_callback(GLFWwindow* window, int new_width, int new_height)
 {
@@ -139,6 +91,63 @@ int main(void)
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_ID);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+	glVertexAttribPointer(
+		0,
+		3,
+		GL_FLOAT,
+		GL_FALSE,
+		3 * sizeof(GL_FLOAT),
+		0
+	);
+
+	glEnableVertexAttribArray(0);
+
+
+	GLuint programIDBlaster = LoadShaders("SimpleVertexShaderBlaster.vertexshader", "SimpleFragmentShaderBlaster.fragmentshader");
+
+	GLfloat verticesBlaster[] = {
+		0.0f,   0.0f, 0.0f,    //center
+
+		-0.01f,   0.02f, 0.0f,    // left top
+		0.01f,   0.02f, 0.0f,    // right top
+		0.015f, 0.017f, 0.0f,    //second right top
+		0.020f, 0.012f, 0.0f,   //third 
+
+		0.023f,   0.0f, 0.0f,    // right
+
+		0.02f, -0.012f, 0.0f,    //right bottom 2
+		0.015f, -0.017, 0.0f,
+
+		0.01f,   -0.02f, 0.0f,    // right bottom (notice sign)
+
+		-0.01f,   -0.02f, 0.0f, //left buttom
+
+		-0.015f, -0.017, 0.0f,   //left bottom 2
+		-0.02f, -0.012f, 0.0f,
+
+		-0.023f,   0.0f, 0.0f,    // left
+
+		-0.02f, 0.012f, 0.0f,
+		-0.015f, 0.017, 0.0f  //left up 2
+	};
+	GLuint indicesBlaster[] = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1
+	};
+
+	GLuint VAOBlaster;
+	glGenVertexArrays(1, &VAOBlaster);
+	glBindVertexArray(VAOBlaster);
+
+	GLuint VBO_IDBlaster;
+	GLuint EBO_IDBlaster;
+	glGenBuffers(1, &VBO_IDBlaster);
+	glGenBuffers(1, &EBO_IDBlaster);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_IDBlaster);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(verticesBlaster), verticesBlaster, GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_IDBlaster);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicesBlaster), indicesBlaster, GL_STATIC_DRAW);
 
 	glVertexAttribPointer(
 		0,
@@ -413,7 +422,9 @@ int main(void)
 	float unit = 0.0005f;
 	//float fallSpeed = 0.0001f;
 
-	Starship starship(glm::vec3(0.0f, -0.5f, 0.0f),10, 0.001f);
+	Blaster blaster(glm::vec3(0.0f, 0.8f, 0.0f), 0.001f, 100);
+
+	Starship starship(glm::vec3(0.0f, -0.5f, 0.0f),10, 0.001f, blaster);
 
 	Asteroid asteroid1(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
 	Asteroid asteroid2(glm::vec3(0.0f, 0.8f, 0.0f), 1, 0.0001f);
@@ -455,13 +466,13 @@ int main(void)
 			std::cout << "LEVEL 1" << std::endl;
 			game.setLevel(lvls[1]);
 
-			asteroid1.asteroidLevelUp();
+			/*asteroid1.asteroidLevelUp();
 			asteroid2.asteroidLevelUp();
 			asteroid3.asteroidLevelUp();
 
 			asteroid1mini.asteroidLevelUp();
 			asteroid2mini.asteroidLevelUp();
-			asteroid3mini.asteroidLevelUp();
+			asteroid3mini.asteroidLevelUp();*/
 
 			starship.starshipLevelUp();
 
@@ -473,13 +484,13 @@ int main(void)
 			std::cout << "LEVEL 2" << std::endl;
 			game.setLevel(lvls[2]);
 
-			asteroid1.asteroidLevelUp();
+			/*asteroid1.asteroidLevelUp();
 			asteroid2.asteroidLevelUp();
 			asteroid3.asteroidLevelUp();
 
 			asteroid1mini.asteroidLevelUp();
 			asteroid2mini.asteroidLevelUp();
-			asteroid3mini.asteroidLevelUp();
+			asteroid3mini.asteroidLevelUp();*/
 
 			starship.starshipLevelUp();
 		}
@@ -490,13 +501,13 @@ int main(void)
 			std::cout << "LEVEL 3" << std::endl;
 			game.setLevel(lvls[3]);
 
-			asteroid1.asteroidLevelUp();
+			/*asteroid1.asteroidLevelUp();
 			asteroid2.asteroidLevelUp();
 			asteroid3.asteroidLevelUp();
 
 			asteroid1mini.asteroidLevelUp();
 			asteroid2mini.asteroidLevelUp();
-			asteroid3mini.asteroidLevelUp();
+			asteroid3mini.asteroidLevelUp();*/
 
 			starship.starshipLevelUp();
 		}
@@ -507,13 +518,13 @@ int main(void)
 			std::cout << "LEVEL 4" << std::endl;
 			game.setLevel(lvls[4]);
 
-			asteroid1.asteroidLevelUp();
+			/*asteroid1.asteroidLevelUp();
 			asteroid2.asteroidLevelUp();
 			asteroid3.asteroidLevelUp();
 
 			asteroid1mini.asteroidLevelUp();
 			asteroid2mini.asteroidLevelUp();
-			asteroid3mini.asteroidLevelUp();
+			asteroid3mini.asteroidLevelUp();*/
 
 			starship.starshipLevelUp();
 		}
@@ -524,13 +535,13 @@ int main(void)
 			std::cout << "MAX LEVEL" << std::endl;
 			game.setLevel(lvls[5]);
 
-			asteroid1.asteroidLevelUp();
+			/*asteroid1.asteroidLevelUp();
 			asteroid2.asteroidLevelUp();
 			asteroid3.asteroidLevelUp();
 
 			asteroid1mini.asteroidLevelUp();
 			asteroid2mini.asteroidLevelUp();
-			asteroid3mini.asteroidLevelUp();
+			asteroid3mini.asteroidLevelUp();*/
 
 			starship.starshipLevelUp();
 		}
@@ -538,14 +549,26 @@ int main(void)
 
 		starship.checkMotion(window, programID);
 
+		//bind blaster
+		//animate blaster
+		glUseProgram(programIDBlaster);
+		glBindVertexArray(VAOBlaster);
+
+		glm::mat4 trans(1.0f);
+		trans = glm::translate(trans, glm::vec3(blaster.getBlasterPosition().x, blaster.getBlasterPosition().y, 0.0));
+		unsigned int transformLoc = glGetUniformLocation(programIDBlaster, "transform");
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+
+		glDrawElements(GL_TRIANGLE_FAN, 16, GL_UNSIGNED_INT, 0);
+
 		
 
 		glUseProgram(programIDAst);
 		glBindVertexArray(VAOAst);
 
 
-
-		glm::mat4 trans(1.0f);
+		trans = glm::mat4(1.0f);
+		/*glm::mat4 trans(1.0f);*/
 
 
 		if (asteroid1.getAsteroidHP())
