@@ -30,6 +30,8 @@ public:
 	int checkShoot(Starship starship, Asteroid asteroid);
 	int checkGotShot(Starship starship, Asteroid asteroid);
 	void moveBullet(Starship starship, Asteroid asteroid);
+	void gameLevelUp(Starship starship, Asteroid asteroid1, Asteroid asteroid2, Asteroid asteroid3,
+		Asteroid asteroid4, Asteroid asteroid5, Asteroid asteroid6);
 
 
 	GLFWwindow* getWindow();

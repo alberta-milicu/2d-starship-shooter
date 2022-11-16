@@ -26,6 +26,12 @@ Asteroid::~Asteroid()
 {
 }
 
+void applyColor(glm::vec4 color, GLuint programID)
+{
+	unsigned int transformLoc2 = glGetUniformLocation(programID, "color");
+	glUniform4fv(transformLoc2, 1, glm::value_ptr(color));
+}
+
 void Asteroid::applyTrans(glm::mat4 trans, GLuint programID)
 {
 	//trans = glm::translate(trans, glm::vec3(this->asteroidPosition.x, this->asteroidPosition.y, 0.0));
@@ -65,19 +71,24 @@ void Asteroid::checkMotion(GLuint programID,GLuint VAO)
 	glDrawElements(GL_TRIANGLE_FAN, 8, GL_UNSIGNED_INT, 0);
 }
 
-void Asteroid::spawnAsteroid(glm::mat4 trans,GLuint programID, float left, float right)
+void Asteroid::spawnAsteroid(glm::mat4 trans,GLuint programID, float left, float right, int level)
 {
 	this->setAsteroidPositionX(randomFloat(left,right));
+	this->setAsteroidHP(1);
 	this->setAsteroidPositionY(1.2f);
 	trans = glm::translate(trans, glm::vec3(this->asteroidPosition.x, this->asteroidPosition.y, 0.0));
 	this->applyTrans(trans, programID);
-	this->setAsteroidHP(HPArray[0]);
+	this->setAsteroidHP(HPArray[level]);
+	//this->applyColor(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), programID);
+
+	/*unsigned int transformLoc2 = glGetUniformLocation(programID, "color");
+	glUniform4fv(transformLoc2, 1, glm::value_ptr(glm::vec4(0.0f, 0.1f * HPArray[level], 0.0f, 1.0f)));*/
 }
 
-void Asteroid::despawnAsteroid(glm::mat4 trans, GLuint programID, float left, float right)
+void Asteroid::despawnAsteroid(glm::mat4 trans, GLuint programID, float left, float right, int level)
 {
 	if (this->getAsteroidPositionY() <= -1.6)
-		this->spawnAsteroid(trans, programID, left, right);
+		this->spawnAsteroid(trans, programID, left, right, level);
 }
 
 
@@ -94,6 +105,8 @@ void Asteroid::asteroidLevelUp()
 	if (this->getFallSpeed() < 0.5)
 		this->setFallSpeed(this->getFallSpeed() * 1.35);
 	else std::cout << "YOU HAVE REACHED MAX LEVEL";
+
+	//this->setAsteroidHP(this->getAsteroidHP() * 500);
 }
 
 

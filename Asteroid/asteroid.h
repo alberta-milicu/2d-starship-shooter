@@ -20,15 +20,16 @@ public:
 	Asteroid(glm::vec3 asteroidPosition, int HP, float fallSpeed);
 	~Asteroid();
 
+	void applyColor(glm::vec4 color, GLuint programID);
 	void applyTrans(glm::mat4 trans, GLuint programID);
 	void applyRotation(glm::mat4 trans, GLuint programID);
 	void moveDown(GLuint programID);
 	void checkMotion(GLuint programID,GLuint VAO);
 	void shootDown();
 
-	void spawnAsteroid(glm::mat4 trans, GLuint programID, float left, float right);
+	void spawnAsteroid(glm::mat4 trans, GLuint programID, float left, float right, int level);
 
-	void despawnAsteroid(glm::mat4 trans, GLuint programID, float left, float right);
+	void despawnAsteroid(glm::mat4 trans, GLuint programID, float left, float right, int level);
 
 	void asteroidLevelUp();
 

@@ -26,7 +26,8 @@ void Blaster::applyTrans(glm::mat4 trans, GLuint programID)
 
 void Blaster::shootUp(GLFWwindow* window, GLuint programID, float startingPointX, float startingPointY)
 {
-	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS ||
+		glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
 	{
 		glm::mat4 trans(1.0f);
 

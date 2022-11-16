@@ -60,9 +60,11 @@ int Game::checkHealth(Starship starship, Health health)
 
 int Game::checkShoot(Starship starship, Asteroid asteroid)
 {
-	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS ||
+		glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
 	{	
-		if (computePositionRelativityX(starship,asteroid) && computePositionRelativityY(starship,asteroid))
+		if (computePositionRelativityX(starship,asteroid) && computePositionRelativityY(starship,asteroid) &&
+			asteroid.getAsteroidPositionY() < 0.6)
 			return 1;
 	}
 	return 0;
@@ -88,6 +90,21 @@ void Game::moveBullet(Starship starship, Asteroid asteroid)
 			
 		}
 	}
+}
+
+void Game::gameLevelUp(Starship starship, Asteroid asteroid1, Asteroid asteroid2, Asteroid asteroid3,
+	Asteroid asteroid4, Asteroid asteroid5, Asteroid asteroid6)
+{
+	asteroid1.asteroidLevelUp();
+	asteroid2.asteroidLevelUp();
+	asteroid3.asteroidLevelUp();
+
+	asteroid4.asteroidLevelUp();
+	asteroid5.asteroidLevelUp();
+	asteroid5.asteroidLevelUp();
+
+
+	starship.starshipLevelUp();
 }
 
 
